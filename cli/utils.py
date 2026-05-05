@@ -1,3 +1,5 @@
+import os
+
 import questionary
 from typing import List, Optional, Tuple, Dict
 
@@ -234,7 +236,7 @@ def select_llm_provider() -> tuple[str, str | None]:
     PROVIDERS = [
         ("OpenAI", "openai", "https://api.openai.com/v1"),
         ("Google", "google", None),
-        ("Anthropic", "anthropic", "https://api.anthropic.com/"),
+        ("Anthropic", "anthropic", os.environ.get("ANTHROPIC_BASE_URL") or "https://api.anthropic.com/"),
         ("xAI", "xai", "https://api.x.ai/v1"),
         ("DeepSeek", "deepseek", "https://api.deepseek.com"),
         ("Qwen", "qwen", "https://dashscope.aliyuncs.com/compatible-mode/v1"),
